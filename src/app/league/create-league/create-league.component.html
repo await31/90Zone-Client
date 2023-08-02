@@ -1,0 +1,15 @@
+<div class="mb-3">
+    <label class="form-label">Enter League Name:</label>
+    <input class="form-control" [(ngModel)]="leagueName" placeholder="Enter League Name" />
+  </div>
+  
+  <div class="mb-3">
+    <label class="form-label">Select Country:</label>
+    <select class="form-select" [(ngModel)]="countryId" name="countryId" required>
+      <option value="" disabled>Select a country</option>
+      <option *ngFor="let country of countries" [value]="country.Id">{{ country.Name }}</option>
+    </select>
+  </div>
+  
+  <button class="btn btn-success mt-3" (click)="createLeague()">Create League</button>
+  

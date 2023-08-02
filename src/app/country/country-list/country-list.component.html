@@ -1,0 +1,21 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Continent</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let country of countryList">
+            <td>{{country.Id}}</td>
+            <td>{{country.Name}}</td>
+            <td>{{country.Continent}}</td>
+            <td>
+              <button type="button" class="btn btn-warning me-1">Edit</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
