@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from 'src/app/shared.service';
+import { League } from 'src/app/models/league.model';
+import { Country } from 'src/app/models/country.model';
+import { CountriesService } from 'src/app/services/countries.service';
+import { LeaguesService } from 'src/app/services/leagues.service';
 
 @Component({
   selector: 'app-league-list',
@@ -9,22 +12,28 @@ import { SharedService } from 'src/app/shared.service';
 
 export class LeagueListComponent implements OnInit {
 
-   constructor(private service:SharedService) {}
+  constructor(private leaguesService:LeaguesService, private countriesService:CountriesService) {}
 
-   leagueList:any=[];
-   league: any;
+   leagueList:League[]= [];
+   countries:Country[]= [];
+   //league: League;
    isEditing:boolean=false;
 
    ngOnInit(): void {
-     this.RefreshLeagueList();
+    this.RefreshLeagueList();
+    this.countriesService.getAllCountries().subscribe({
+      next: (countries) => {
+       this.countries = countries;
+      }
+   })
    }
 
    RefreshLeagueList() {
-    this.service.getAllLeagues().subscribe(data=> {this.leagueList = data;})
+    this.leaguesService.getAllLeagues().subscribe(data=> {this.leagueList = data;})
    }
 
-   leagueDetail(league:any) {
-     this.league = league;
-     this.isEditing = true;
-   }
+  //  leagueDetail(league:League) {
+  //    this.league = league;
+  //    this.isEditing = true;
+  //  }
 }

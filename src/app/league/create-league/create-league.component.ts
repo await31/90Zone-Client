@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Country } from 'src/app/models/country.model';
+import { CountriesService } from 'src/app/services/countries.service';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -9,31 +11,14 @@ import { SharedService } from 'src/app/shared.service';
 export class CreateLeagueComponent implements OnInit {
 
   leagueName: any;
+  leagueId: any;
   countryId: any;
-  countries: any[] = [];
+  countries: Country[] = [];
 
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, countriesService: CountriesService) {}
 
   ngOnInit(): void {
-    this.getAllCountries();
+    //this.getAllCountries();
   }
 
-  getAllCountries() {
-    this.service.getAllCountries().subscribe(
-      res => {
-        this.countries = res; 
-      },
-      error => {
-        console.error(error); 
-      }
-    );
-  }
-
-  createLeague() {
-    this.service.createLeague(this.leagueName, this.countryId).subscribe(
-      res => {
-        alert(res.toString()); 
-      }
-    );
-  }
 }

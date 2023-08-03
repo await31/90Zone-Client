@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from 'src/app/shared.service';
+import { Country } from 'src/app/models/country.model';
+import { CountriesService } from 'src/app/services/countries.service';
 
 @Component({
   selector: 'app-country-list',
@@ -8,15 +9,17 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class CountryListComponent implements OnInit {
 
-  constructor(private service:SharedService) {}
+  constructor(private countriesService:CountriesService) {}
 
-  countryList:any=[];
+  countries:Country[]= [];
 
   ngOnInit(): void {
-    this.RefreshCountryList();
-  }
-
-  RefreshCountryList() {
-   this.service.getAllCountries().subscribe(data=> {this.countryList = data;})
+    this.countriesService.getAllCountries().subscribe({
+           next: (countries) => {
+            this.countries = countries;
+           }
+        })
   }
 }
+
+
