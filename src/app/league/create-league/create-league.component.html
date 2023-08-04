@@ -1,15 +1,21 @@
-<div class="mb-3">
-    <label class="form-label">Enter League Name:</label>
-    <input class="form-control" [(ngModel)]="leagueName" placeholder="Enter League Name" />
-  </div>
-  
-  <div class="mb-3">
-    <label class="form-label">Select Country:</label>
-    <select class="form-select" [(ngModel)]="countryId" name="countryId" required>
-      <option value="" disabled>Select a country</option>
-      <!-- <option *ngFor="let country of countries" [value]="country.Id">{{ country.Name }}</option> -->
-    </select>
-  </div>
-  
-  <!-- <button class="btn btn-success mt-3" (click)="createLeague()" *ngIf="leagueId==0">Create League</button> -->
+  <div class="container py-5">
+    <h1 class="mb-3">Add League</h1>
+    <form #form="ngForm" (ngSubmit)="addLeague()">
+      <div class="mb-3">
+        <label for="leagueName" class="form-label">League name</label>
+        <input type="text" class="form-control" id="countryName" placeholder="Enter country name"
+         name="Name" [(ngModel)]="addLeagueRequest.Name">
+      </div>
+      <div class="mb-3">
+        <label for="countryName" class="form-label">Country</label>
+        <select class="form-select" [(ngModel)]="countryId" name="countryId" required>
+          <option value="" disabled>Select a country</option>
+          <option *ngFor="let country of countries" [value]="country.Id">{{ country.Name }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success float-end">Add new</button>
+    </form>
+    </div>
+    
+    
   

@@ -1,16 +1,25 @@
-<div *ngIf="league">
-  <div class="mb-3">
-    <label class="form-label">Enter new League Name:</label>
-    <input class="form-control" [(ngModel)]="leagueName" placeholder="Enter new League Name" />
+<div class="container py-5">
+  <h1 class="mb-3">Edit League</h1>
+  <form #form="ngForm" (ngSubmit)="editLeague()">
+    <div class="mb-3">
+      <label for="countryId" class="form-label">ID</label>
+      <input type="text" class="form-control" id="countryId"
+       name="Id" [(ngModel)]="leagueDetail.Id" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="leagueName" class="form-label">League name</label>
+      <input type="text" class="form-control" id="leagueName" placeholder="Enter league name"
+       name="Name" [(ngModel)]="leagueDetail.Name">
+    </div>
+    <div class="mb-3">
+      <label for="continentName" class="form-label">Country</label>
+      <select class="form-select" [(ngModel)]="countryId" name="countryId" required>
+        <option value="" disabled>Select a country</option>
+        <option *ngFor="let country of countries" [value]="country.Id">{{ country.Name }}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-warning float-end">Edit</button>
+  </form>
   </div>
-  <div class="mb-3">
-    <label class="form-label">Select Country:</label>
-    <select class="form-select" [(ngModel)]="countryId" name="countryId" required>
-      <option value="" disabled>Select a country</option>
-      <option *ngFor="let country of countries" [value]="country.Id">{{ country.Name }}</option>
-    </select>
-  </div>
-  <!-- <button class="btn btn-success mt-3" (click)="updateLeague()" *ngIf="leagueId!=0">Edit League</button> -->
-</div>
-
+  
   

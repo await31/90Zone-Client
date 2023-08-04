@@ -14,26 +14,14 @@ export class LeagueListComponent implements OnInit {
 
   constructor(private leaguesService:LeaguesService, private countriesService:CountriesService) {}
 
-   leagueList:League[]= [];
-   countries:Country[]= [];
-   //league: League;
-   isEditing:boolean=false;
-
+  leagues:League[]= [];
+   
    ngOnInit(): void {
-    this.RefreshLeagueList();
-    this.countriesService.getAllCountries().subscribe({
-      next: (countries) => {
-       this.countries = countries;
+    this.leaguesService.getAllLeagues().subscribe({
+      next: (leagues) => {
+       this.leagues = leagues;
       }
    })
    }
 
-   RefreshLeagueList() {
-    this.leaguesService.getAllLeagues().subscribe(data=> {this.leagueList = data;})
-   }
-
-  //  leagueDetail(league:League) {
-  //    this.league = league;
-  //    this.isEditing = true;
-  //  }
 }

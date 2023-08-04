@@ -1,3 +1,7 @@
+<button type="button" class="btn btn-success my-3" [routerLink]="['/league','add']">
+  Add new league
+</button>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -8,28 +12,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let league of leagueList">
+    <tr *ngFor="let league of leagues">
       <td>{{league.Id}}</td>
       <td>{{league.Name}}</td>
-      <td>{{league.Country.Name}}</td>
+      <td>{{league.Country?.Name}}</td>
       <td>
-        <!-- <button type="button" class="btn btn-warning me-1" (click)="leagueDetail(league)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button> -->
-        <button type="button" class="btn btn-danger">Delete</button>
+        <a class="btn btn-warning me-1" [routerLink]="['/league','edit',league.Id]">Edit</a>
+        <button type="button" class="btn btn-danger" [routerLink]="['/league','delete',league.Id]">Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
-
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit League Information</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <app-edit-league [league]="league" *ngIf="isEditing"></app-edit-league>
-      </div>
-    </div>
-  </div>
-</div> -->

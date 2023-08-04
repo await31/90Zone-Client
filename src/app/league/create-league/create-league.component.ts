@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Country } from 'src/app/models/country.model';
+import { Router } from '@angular/router';
+import { Country, CountryCreated } from 'src/app/models/country.model';
+import { LeagueCreated } from 'src/app/models/league.model';
 import { CountriesService } from 'src/app/services/countries.service';
-import { SharedService } from 'src/app/shared.service';
+import { LeaguesService } from 'src/app/services/leagues.service';
 
 @Component({
   selector: 'app-create-league',
@@ -10,15 +12,31 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class CreateLeagueComponent implements OnInit {
 
-  leagueName: any;
-  leagueId: any;
-  countryId: any;
   countries: Country[] = [];
 
-  constructor(private service: SharedService, countriesService: CountriesService) {}
+  addLeagueRequest: LeagueCreated = {
+    Name: ''
+  };
+  
+  countryId: number = 0;
+
+  constructor(private leaguesService:LeaguesService, private countriesService: CountriesService, private router: Router) {}
 
   ngOnInit(): void {
-    //this.getAllCountries();
+    this.countriesService.getAllCountries().subscribe({
+      next: (countries) => {
+       this.countries = countries;
+      }
+   })
+  }
+
+  addLeague() {
+    this.leaguesService.addLeague(this.addLeagueRequest, this.countryId)
+    .subscribe({
+      next: (response) => {
+        this.router.navigate(['league'])
+      }
+    })
   }
 
 }

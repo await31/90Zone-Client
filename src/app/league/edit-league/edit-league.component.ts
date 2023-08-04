@@ -1,50 +1,68 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CountriesService } from 'src/app/services/countries.service';
-import { SharedService } from 'src/app/shared.service';
+import { LeaguesService } from 'src/app/services/leagues.service';
+import { Country } from 'src/app/models/country.model';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { League } from 'src/app/models/league.model';
 
 @Component({
   selector: 'app-edit-league',
   templateUrl: './edit-league.component.html',
   styleUrls: ['./edit-league.component.css']
 })
+
 export class EditLeagueComponent implements OnInit {
 
-    @Input() league:any
-    leagueName: any;
-    leagueId: any;
-    countryId: any;
-    countries: any[] = [];
+  countries: any[] = [];
+  countryId: number = 0;
 
-    constructor(private service:SharedService, private countriesService:CountriesService) {}
+  constructor(private leaguesService: LeaguesService, private countriesService: CountriesService, private router: Router, private route: ActivatedRoute) { }
 
-    ngOnInit(): void {
-      this.leagueId=this.league.Id;
-      this.leagueName=this.league.Name;
-      this.getAllCountries();
-    }
+  leagueDetail: League = {
+    Id: '',
+    Name: ''
+  };
 
-    getAllCountries() {
-      this.countriesService.getAllCountries().subscribe(
-        (res: any[]) => { 
-          this.countries = res; 
-        },
-        error => {
-          console.error(error); 
-        }
-      );
-    }
+  editLeague() {
+    this.leaguesService.editLeague(this.leagueDetail.Id, this.leagueDetail, this.countryId)
+    .subscribe({
+      next: (response) => {
+        this.router.navigate(['league'])
+      }
+    })
+  }
 
-    // updateLeague(): void {
-    //   const updatedLeague = {
-    //     Id: this.leagueId,
-    //     Name: this.leagueName,
-    //     CountryId: this.countryId
-    //   };
+  ngOnInit(): void {
+    this.countriesService.getAllCountries().subscribe({
+      next: (countries) => {
+        this.countries = countries;
+      }
+    })
+    this.route.paramMap.subscribe({
+      next: (params) => {
+        const id = params.get('id');
+        
+         if(id) {
+          this.leaguesService.getLeague(id)
+          .subscribe({
+            next: (response) => {
+              this.leagueDetail = response;
+            }
+          })
+         }
+      }
+    })
+  }
 
-    //   this.service.updateLeague(this.leagueId, updatedLeague).subscribe(
-    //     () => {
-    //       console.log('League updated successfully');
-    //     }
-    //   );
-    // }
+  getAllCountries() {
+    this.countriesService.getAllCountries().subscribe(
+      (res: any[]) => {
+        this.countries = res;
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
 }

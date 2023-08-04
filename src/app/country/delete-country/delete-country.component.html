@@ -1,0 +1,23 @@
+<div class="container py-5">
+    <h1 class="mb-3">Are you sure you want to delete this country?</h1>
+    <form #form="ngForm" (ngSubmit)="deleteCountry()">
+      <div class="mb-3">
+        <label for="countryId" class="form-label">ID</label>
+        <input type="text" class="form-control" id="countryId"
+         name="Id" [(ngModel)]="countryDetail.Id" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="countryName" class="form-label">Country name</label>
+        <input type="text" class="form-control" id="countryName" placeholder="Enter country name"
+         name="Name" [(ngModel)]="countryDetail.Name" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="continentName" class="form-label">Continent</label>
+        <input type="text" class="form-control" id="continentName" placeholder="Enter continent name"
+         name="Continent" [(ngModel)]="countryDetail.Continent" readonly>
+      </div>
+      <button type="submit" data-bs-dismiss="modal" class="btn btn-danger float-end">Delete</button>
+    </form>
+    </div>
+    
+    
