@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Country } from 'src/app/models/country.model';
 import { LeaguesService } from 'src/app/services/leagues.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { League } from 'src/app/models/league.model';

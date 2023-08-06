@@ -3,19 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LeagueComponent } from './league/league.component';
-import { LeagueListComponent } from './league/league-list/league-list.component';
-import { CreateLeagueComponent } from './league/create-league/create-league.component';
-import { CountryComponent } from './country/country.component';
-import { CountryListComponent } from './country/country-list/country-list.component';
+import { LeagueComponent } from './components/league/league.component';
+import { LeagueListComponent } from './components/league/league-list/league-list.component';
+import { CreateLeagueComponent } from './components/league/create-league/create-league.component';
+import { CountryComponent } from './components/country/country.component';
+import { CountryListComponent } from './components/country/country-list/country-list.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditLeagueComponent } from './league/edit-league/edit-league.component';
-import { AddCountryComponent } from './country/add-country/add-country.component';
-import { EditCountryComponent } from './country/edit-country/edit-country.component';
-import { DeleteCountryComponent } from './country/delete-country/delete-country.component';
-import { DeleteLeagueComponent } from './league/delete-league/delete-league.component';
+import { EditLeagueComponent } from './components/league/edit-league/edit-league.component';
+import { AddCountryComponent } from './components/country/add-country/add-country.component';
+import { EditCountryComponent } from './components/country/edit-country/edit-country.component';
+import { DeleteCountryComponent } from './components/country/delete-country/delete-country.component';
+import { DeleteLeagueComponent } from './components/league/delete-league/delete-league.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { DeleteLeagueComponent } from './league/delete-league/delete-league.comp
     AddCountryComponent,
     EditCountryComponent,
     DeleteCountryComponent,
-    DeleteLeagueComponent
+    DeleteLeagueComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
