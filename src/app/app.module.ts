@@ -9,7 +9,7 @@ import { CreateLeagueComponent } from './components/league/create-league/create-
 import { CountryComponent } from './components/country/country.component';
 import { CountryListComponent } from './components/country/country-list/country-list.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditLeagueComponent } from './components/league/edit-league/edit-league.component';
 import { AddCountryComponent } from './components/country/add-country/add-country.component';
@@ -18,6 +18,8 @@ import { DeleteCountryComponent } from './components/country/delete-country/dele
 import { DeleteLeagueComponent } from './components/league/delete-league/delete-league.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { RegisterComponent } from './components/register/register.component';
     DeleteCountryComponent,
     DeleteLeagueComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,11 @@ import { RegisterComponent } from './components/register/register.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

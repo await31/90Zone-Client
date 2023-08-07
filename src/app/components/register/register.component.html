@@ -1,1 +1,56 @@
-<p>register works!</p>
+<section class="vh-100" style="background-color: #000000;
+background-image: linear-gradient(315deg, #000000 0%, #7f8c8d 74%);
+">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-6">
+                            <img src="assets/images/signup-wallpaper.jpg"
+                                class="img-fluid w-100 h-100 rounded-4 rounded-end-0"/>
+                        </div>
+                        <div class="col-md-6 col-lg-6 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <form [formGroup]="registerForm">
+                                    <div class="d-flex flex-column align-items-center mb-3 pb-1 border-0">
+                                        <img src="assets/images/logo-no-text.png" alt="90Zone Logo" class="img-fluid"
+                                            style="width: 140px; height: 100px;">
+                                            <h5 class="fw-bold mb-3 pb-3 text-center" style="letter-spacing: 1px;">
+                                                Create a 90Zone account</h5>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <input formControlName="username" type="text"
+                                            class="form-control form-control-lg"
+                                            placeholder="Enter your username" />
+                                    <small *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required','username')" class="text-danger">*Username is required</small>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <input formControlName="email" type="email"
+                                            class="form-control form-control-lg"
+                                            placeholder="Enter your email address" />
+                                    <small *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required','email')" class="text-danger">*Email is required</small>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <input formControlName="password" type="password" class="form-control form-control-lg" placeholder="Enter your password" />
+                                        <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')" class="text-danger">*Password is required</small>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <input formControlName="confirmPassword" type="password" class="form-control form-control-lg" placeholder="Confirm your password" />
+                                        <small *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required','confirmPassword')" class="text-danger">*Confirm password is required</small>
+                                        <small *ngIf="registerForm.hasError('confirmPasswordMismatch')" class="text-danger">*Passwords do not match</small> <!-- Display error message for mismatch -->
+                                    </div>
+                                    <div class="pt-1 mb-4">
+                                        <button (click)="onRegister()" class="btn btn-dark btn-lg w-100" type="button">Sign up</button>
+                                    </div>
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? Login 
+                                        <a [routerLink]="['/login']" class="text-secondary">here</a></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
