@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     DeleteLeagueComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    AdminSidebarComponent
   ],
   imports: [
     BrowserModule,

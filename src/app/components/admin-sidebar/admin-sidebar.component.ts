@@ -4,16 +4,12 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-admin-sidebar',
+  templateUrl: './admin-sidebar.component.html',
+  styleUrls: ['./admin-sidebar.component.css']
 })
-
-
-export class DashboardComponent implements OnInit {
-    
+export class AdminSidebarComponent {
   constructor(private auth:AuthService, private api:DashboardService, private userStore: UserStoreService) {}
-
 
   public username: string = ""
   public role!: string;
@@ -21,10 +17,6 @@ export class DashboardComponent implements OnInit {
   public users:any = [];
 
   ngOnInit(): void {
-    this.api.getAllUsers().subscribe(res=>{
-      this.users = res;
-    });
-
     this.userStore.getUsernameFromStore()
     .subscribe(val=>{
       let usernameFromToken = this.auth.getUsernameFromToken();
@@ -42,3 +34,4 @@ export class DashboardComponent implements OnInit {
     this.auth.logOut();
   }
 }
+

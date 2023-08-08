@@ -7,5 +7,6 @@ export interface UserObj {
 export interface LoginObj {
     Email: string;
     Password: string;
-    Token: string;
+    AccessToken: string;
+    RefreshToken: string;
 }

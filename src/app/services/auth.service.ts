@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginObj, UserObj } from '../models/authObj.model';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { TokenApiModel } from '../models/token-api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,15 @@ export class AuthService {
    login(loginObj:LoginObj) {
     return this.http.post<LoginObj>(this.APIUrl +'/login', loginObj);
    }
+   
+   renewToken(tokenApi:TokenApiModel){
+    return this.http.post<any>(this.APIUrl+'/refresh', tokenApi);
+   }
 
    logOut(){
     //localStorage.clear();
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
     this.router.navigate(['login']);
    }
 
@@ -35,8 +41,16 @@ export class AuthService {
      localStorage.setItem('token', tokenValue)
    }
 
+   storeRefreshToken(tokenValue: string) {
+    localStorage.setItem('refreshToken', tokenValue)
+  }
+
    getToken(){
     return localStorage.getItem('token');
+   }
+
+   getRefreshToken(){
+    return localStorage.getItem('refreshToken');
    }
 
    isLoggedIn(): boolean{

@@ -1,82 +1,34 @@
-<div class="container-fluid min-vh-100">
-    <div class="row">
-        <ng-container *ngIf="role === 'Admin'">
-            <div class="col-md-2 h-100 px-0" >
-                <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
-                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                      <h4 class="text-center">Management</h4>
-                    </a>
-                    <hr>
-                    <ul class="nav nav-pills flex-column mb-auto">
-                      <li>
-                        <a href="#" class="nav-link link-body-emphasis">
-                            <i class="fa-solid fa-gauge"></i> &nbsp;Dashboard
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="nav-link link-body-emphasis">
-                            <i class="fa-solid fa-people-group"></i> Player Management
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="nav-link link-body-emphasis">
-                            <i class="fa-solid fa-dollar-sign"></i> &nbsp;&nbsp;Salary Management
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="nav-link link-body-emphasis">
-                            <i class="fa-solid fa-share-nodes"></i> &nbsp;&nbsp;Social Media
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="nav-link link-body-emphasis">
-                            <i class="fa-solid fa-users-between-lines"></i> &nbsp;Line-up (Preview)
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="nav-link link-body-emphasis">
-                            <i class="fa-solid fa-comments-dollar"></i> &nbsp;Transfer Market
-                        </a>
-                      </li>
-                    </ul>
-                    <hr>
-    
-    
-                    <div class="dropdown">
-                      <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>{{username}}</strong>
-                      </a>
-                      <ul class="dropdown-menu text-small shadow">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" (onclick)="logOut()">Sign out</a></li>
-                      </ul>
-                    </div>
-                  </div>
-            </div>
-        </ng-container>
-        <div class="col-md-10">
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let user of users">
-                                <td>{{user.UserName}}</td>
-                                <td>{{user.Email}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid">
+  <div class="row vh-100">
+    <div class="col-2 p-0">
+      <ng-container *ngIf="role === 'Admin'">
+        <app-admin-sidebar></app-admin-sidebar>
+     </ng-container>
     </div>
+    <div class="col-10 p-0">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center my-4">List of players</h1>
+          <table class="table table-striped table-bordered table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <ng-container *ngFor="let user of users; let countId = index">
+                <tr>
+                  <td>{{countId + 1}}</td>
+                  <td>{{user.UserName}}</td>
+                  <td>{{user.Email}}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
