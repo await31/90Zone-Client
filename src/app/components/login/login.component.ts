@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
             let tokenPayload= this.auth.decodeToken();
             this.userStore.setUsernameForStore(tokenPayload.name);
             this.userStore.setRoleForStore(tokenPayload.role);
-            this.router.navigate(['dashboard'])
+            this.router.navigate([''])
           },
           error:(err)=> {
             alert(err?.error.message)

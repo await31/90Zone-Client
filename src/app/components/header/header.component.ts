@@ -1,32 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Club, Player } from 'src/app/models/player.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
+export class HeaderComponent implements OnInit  {
 
-
-export class DashboardComponent implements OnInit {
-    
   constructor(private auth:AuthService, private api:DashboardService, private userStore: UserStoreService) {}
-
 
   public username: string = ""
   public role!: string;
 
-  public users:any = [];
-
-  // data!: Club;
-
   ngOnInit(): void {
-    this.api.getAllUsers().subscribe(res=>{
-      this.users = res;
-    });
 
     this.userStore.getUsernameFromStore()
     .subscribe(val=>{

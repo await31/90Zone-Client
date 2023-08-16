@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, ɵɵqueryRefresh } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginObj, UserObj } from '../models/authObj.model';
 import { Router } from '@angular/router';
@@ -34,7 +34,8 @@ export class AuthService {
     //localStorage.clear();
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
-    this.router.navigate(['login']);
+    window.location.reload();
+    this.router.navigate(['']);
    }
 
    storeToken(tokenValue: string) {
