@@ -17,7 +17,7 @@
                   <tr>
                     <td>{{club.id}}</td>
                     <td>{{club.name}}</td>
-                    <td><button class="btn btn-info">Details</button></td>
+                    <td><button class="btn btn-info" [routerLink]="['/club','details',club.id]">Details</button></td>
                   </tr>
                 </ng-container>
               </tbody>

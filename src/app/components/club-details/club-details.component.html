@@ -1,0 +1,137 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>{{ clubDetail.name }}</h1> <img [src]="clubDetail.image" alt="{{ clubDetail.name }} logo"
+                class="img-fluid">
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12 col-md-6">
+            <h2 class="text-center">Club Information</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Official Name</th>
+                    <td>{{ clubDetail.officialName }}</td>
+                </tr>
+                <tr>
+                    <th>Legal Form</th>
+                    <td>{{ clubDetail.legalForm }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ clubDetail.addressLine1 }}<br>{{ clubDetail.addressLine2 }}<br>{{ clubDetail.addressLine3 }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Telephone</th>
+                    <td>{{ clubDetail.tel }}</td>
+                </tr>
+                <tr>
+                    <th>Fax</th>
+                    <td>{{ clubDetail.fax }}</td>
+                </tr>
+                <tr>
+                    <th>Website</th>
+                    <td><a [href]="clubDetail.website">{{ clubDetail.website }}</a></td>
+                </tr>
+                <tr>
+                    <th>Founded On</th>
+                    <td>{{ clubDetail.foundedOn }}</td>
+                </tr>
+                <tr>
+                    <th>Members</th>
+                    <td>{{ clubDetail.members }} (as of {{ clubDetail.membersDate }})</td>
+                </tr>
+            </table> <!-- Other sports -->
+            <h3 class="text-center">Other Sports</h3>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let sport of clubDetail.otherSports">{{ sport }}</li>
+            </ul> <!-- Colors -->
+
+        </div> <!-- Stadium and League Information -->
+        <div class="col-12 col-md-6"> <!-- Stadium Information -->
+            <h2 class="text-center">Stadium Information</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ clubDetail.stadiumName }}</td>
+                </tr><br />
+                <tr>
+                    <th>Seats</th>
+                    <td>{{ clubDetail.stadiumSeats }}</td>
+                </tr><br />
+            </table> <!-- League Information -->
+            <h2 class="text-center">League Information</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ clubDetail.league.name }}</td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td>{{ clubDetail.league.countryName }}</td>
+                </tr>
+                <tr>
+                    <th>Tier</th>
+                    <td>{{ clubDetail.league.tier }}</td>
+                </tr>
+            </table> <!-- Squad Information -->
+            <h2 class="text-center">Squad Information</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Size</th>
+                    <td>{{ clubDetail.squad.size }}</td>
+                </tr>
+                <tr>
+                    <th>Average Age</th>
+                    <td>{{ clubDetail.squad.averageAge }}</td>
+                </tr>
+                <tr>
+                    <th>Foreigners</th>
+                    <td>{{ clubDetail.squad.foreigners }}</td>
+                </tr>
+                <tr>
+                    <th>National Team Players</th>
+                    <td>{{ clubDetail.squad.nationalTeamPlayers }}</td>
+                </tr>
+            </table>
+        </div>
+    </div> <!-- Players -->
+    <div class="row mt-3">
+        <div class="col-12">
+            <h2 class="text-center">Players</h2> <!-- Player Table -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Date of Birth</th>
+                        <th>Age</th>
+                        <th>Nationality</th>
+                        <th>Height</th>
+                        <th>Foot</th>
+                        <th>Joined On</th>
+                        <th>Signed From</th>
+                        <th>Contract Until</th>
+                        <th>Market Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of listPlayers.players">
+                        <td>{{ player.name }}</td>
+                        <td>{{ player.position }}</td>
+                        <td>{{ player.dateOfBirth }}</td>
+                        <td>{{ player.age }}</td>
+                        <td>{{ player.nationality.join(', ') }}</td>
+                        <td>{{ player.height }}</td>
+                        <td>{{ player.foot }}</td>
+                        <td>{{ player.joinedOn }}</td>
+                        <td>{{ player.signedFrom }}</td>
+                        <td>{{ player.contract }}</td>
+                        <td>{{ player.marketValue }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

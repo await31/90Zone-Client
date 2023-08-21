@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Club } from '../models/player.model';
+import { Club, Player } from '../models/player.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +32,15 @@ export class TransfermarktApiService {
   }
   getSPLClubs():Observable<Club> {
     return this.http.get<Club>(this.TransfermarktAPI +'/competitions/SA1/clubs');
+  }
+
+  getClubDetails(clubId: string): Observable<Club> {
+    const url = `${this.TransfermarktAPI}/clubs/${clubId}/profile`;
+    return this.http.get<Club>(url);
+  }
+
+  getAllPlayersOfClub(clubId: string): Observable<Player[]> {
+    const url = `${this.TransfermarktAPI}/clubs/${clubId}/players`;
+    return this.http.get<Player[]>(url);
   }
 }

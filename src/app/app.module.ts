@@ -23,6 +23,7 @@ import { LigueOneComponent } from './components/leagues/ligue-one/ligue-one.comp
 import { MlsComponent } from './components/leagues/mls/mls.component';
 import { SplComponent } from './components/leagues/spl/spl.component';
 import { ListClubsComponent } from './components/list-clubs/list-clubs.component';
+import { ClubDetailsComponent } from './components/club-details/club-details.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ListClubsComponent } from './components/list-clubs/list-clubs.component
     LigueOneComponent,
     MlsComponent,
     SplComponent,
-    ListClubsComponent
+    ListClubsComponent,
+    ClubDetailsComponent
   ],
   imports: [
     BrowserModule,

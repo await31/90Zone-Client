@@ -15,6 +15,7 @@ import { SeriaAComponent } from './components/leagues/seria-a/seria-a.component'
 import { LigueOneComponent } from './components/leagues/ligue-one/ligue-one.component';
 import { MlsComponent } from './components/leagues/mls/mls.component';
 import { SplComponent } from './components/leagues/spl/spl.component';
+import { ClubDetailsComponent } from './components/club-details/club-details.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '', pathMatch: 'full' },
@@ -30,7 +31,8 @@ const routes: Routes = [
 { path: 'seria-a', component: SeriaAComponent },
 { path: 'ligue-one', component: LigueOneComponent },
 { path: 'mls', component: MlsComponent },
-{ path: 'spl', component: SplComponent }
+{ path: 'spl', component: SplComponent },
+{path: 'club/details/:id',component:ClubDetailsComponent},
 ];
 
 @NgModule({

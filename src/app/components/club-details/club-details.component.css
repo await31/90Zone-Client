@@ -1,0 +1,14 @@
+/* club-detail.component.css */
+.container {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+  
+  table {
+    background-color: white;
+  }
+  
+  th {
+    color: #3c8dbc;
+  }
+  
